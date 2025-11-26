@@ -4131,7 +4131,7 @@
 
 
     <script src="https://unpkg.com/kursor"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         document.addEventListener("visibilitychange", function () {
@@ -4157,12 +4157,31 @@
             removeDefaultCursor: false, // default cursor stay
         })
 
+
         const validPaths = ["/", "/index.html"]; // এখানে তোমার আসল পেজগুলোর লিস্ট দাও
         const currentPath = window.location.pathname;
 
         if (!validPaths.includes(currentPath)) {
             window.location.href = "/404"; // custom error page
         }
+
+        // =========================
+        // 1️⃣ RIGHT CLICK BLOCK
+        // =========================
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "⚠️ Security Alert!",
+                text: "Right-click is disabled on this website.",
+                icon: "warning",
+                confirmButtonText: "OK",
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            }).then(() => {
+                window.location.href = "https://xalif.netlify.app/";
+            });
+        });
     </script>
 
     <style>
