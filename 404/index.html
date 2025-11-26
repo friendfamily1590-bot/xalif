@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@300;400;600;700&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0D0D0D;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cyber Grid Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 30, 56, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 30, 56, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridScroll 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridScroll {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        /* Scanline Effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent 50%,
+                    rgba(255, 30, 56, 0.03) 51%,
+                    transparent 52%);
+            background-size: 100% 4px;
+            animation: scanlines 8s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes scanlines {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 100%;
+            }
+        }
+
+        .error-wrapper {
+            width: 100%;
+            min-height: 100%;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .error-container {
+            max-width: 65rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Status Banner */
+        .status-banner {
+            background: rgba(255, 30, 56, 0.1);
+            border: 1px solid rgba(255, 30, 56, 0.4);
+            border-left: 4px solid #FF1E38;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff0000;
+            animation: statusPulse 1.5s ease-in-out infinite;
+        }
+
+        .status-indicator.active {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        @keyframes statusPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px currentColor;
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 20px currentColor, 0 0 30px rgba(255, 255, 255, 0.3);
+                transform: scale(1.3);
+            }
+        }
+
+        /* Main Content Box */
+        .error-box {
+            background: linear-gradient(145deg, #1A1A1A 0%, #0D0D0D 100%);
+            border: 1px solid rgba(255, 30, 56, 0.3);
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+            box-shadow:
+                0 0 60px rgba(255, 30, 56, 0.3),
+                inset 0 0 80px rgba(255, 30, 56, 0.05);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Corner Brackets */
+        .error-box::before,
+        .error-box::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #FF1E38;
+            z-index: 10;
+        }
+
+        .error-box::before {
+            top: 15px;
+            left: 15px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .error-box::after {
+            bottom: 15px;
+            right: 15px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Glitch Effect for Error Code */
+        .error-code {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 8rem;
+            font-weight: 900;
+            color: #FF1E38;
+            text-shadow:
+                0 0 30px rgba(255, 30, 56, 0.8),
+                0 0 60px rgba(255, 30, 56, 0.6),
+                0 0 90px rgba(255, 30, 56, 0.4);
+            margin-bottom: 1rem;
+            position: relative;
+            animation: glitch 3s infinite;
+            letter-spacing: 10px;
+        }
+
+        @keyframes glitch {
+
+            0%,
+            90%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(2px, -2px);
+            }
+
+            60% {
+                transform: translate(-2px, -2px);
+            }
+
+            80% {
+                transform: translate(2px, 2px);
+            }
+        }
+
+        .node-indicator {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #FF1E38;
+            text-shadow: 0 0 10px rgba(255, 30, 56, 0.8);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .node-indicator i {
+            margin-right: 0.5rem;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-shadow:
+                0 0 20px rgba(255, 30, 56, 0.6),
+                0 0 40px rgba(255, 30, 56, 0.4);
+        }
+
+        .error-subtitle {
+            font-size: 1.25rem;
+            color: #FF1E38;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 30, 56, 0.5);
+        }
+
+        .error-description {
+            font-size: 1.125rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 40rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* System Status Cards */
+        .system-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 1s ease 0.3s backwards;
+        }
+
+        .status-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 30, 56, 0.2);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .status-card::before,
+        .status-card::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #FF1E38;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .status-card::before {
+            top: 6px;
+            left: 6px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .status-card::after {
+            bottom: 6px;
+            right: 6px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .status-card:hover {
+            border-color: rgba(255, 30, 56, 0.5);
+            box-shadow: 0 0 25px rgba(255, 30, 56, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .status-card:hover::before,
+        .status-card:hover::after {
+            opacity: 1;
+        }
+
+        .status-card-icon {
+            font-size: 2rem;
+            color: #FF1E38;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 0 15px rgba(255, 30, 56, 0.8);
+        }
+
+        .status-card-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.875rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-card-value {
+            font-size: 1.125rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Suggestions */
+        .suggestions {
+            background: rgba(255, 30, 56, 0.05);
+            border: 1px solid rgba(255, 30, 56, 0.3);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            animation: fadeIn 1.2s ease 0.5s backwards;
+        }
+
+        .suggestions h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            color: #FF1E38;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 30, 56, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .suggestions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .suggestions li {
+            color: #c0c0c0;
+            font-size: 1rem;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .suggestions li:before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #FF1E38;
+            position: absolute;
+            left: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 30, 56, 0.8);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #FF1E38 0%, #cc0022 100%);
+            color: #ffffff;
+            padding: 1.25rem 3rem;
+            border: 2px solid #FF1E38;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 30, 56, 0.5);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease 0.7s backwards;
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .back-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 0 50px rgba(255, 30, 56, 0.7),
+                0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .back-button i {
+            font-size: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border-top: 2px solid rgba(255, 30, 56, 0.3);
+            animation: fadeIn 1.8s ease 0.9s backwards;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 0.9375rem;
+            letter-spacing: 1px;
+        }
+
+        .footer p i {
+            margin: 0 0.5rem;
+            color: #FF1E38;
+        }
+
+        /* Floating Icons Background */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: #FF1E38;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            font-size: 1.5rem;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            font-size: 1.75rem;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 30%;
+            right: 20%;
+            font-size: 2.25rem;
+            animation-delay: 3s;
+        }
+
+        .floating-icon:nth-child(5) {
+            top: 40%;
+            left: 5%;
+            font-size: 1.5rem;
+            animation-delay: 4s;
+        }
+
+        .floating-icon:nth-child(6) {
+            top: 60%;
+            right: 10%;
+            font-size: 2rem;
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+
+        @media (max-width: 48rem) {
+            .error-wrapper {
+                padding: 1.5rem 1rem;
+            }
+
+            .error-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .error-code {
+                font-size: 5rem;
+                letter-spacing: 5px;
+            }
+
+            .error-title {
+                font-size: 1.75rem;
+                letter-spacing: 2px;
+            }
+
+            .error-subtitle {
+                font-size: 1rem;
+            }
+
+            .error-description {
+                font-size: 1rem;
+            }
+
+            .system-status {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .status-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .suggestions {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="cyber-grid"></div>
+    <div class="scanline"></div><!-- Floating Icons Background -->
+    <div class="floating-icons"><i class="floating-icon fas fa-exclamation-triangle"></i> <i
+            class="floating-icon fas fa-bug"></i> <i class="floating-icon fas fa-times-circle"></i> <i
+            class="floating-icon fas fa-shield-alt"></i> <i class="floating-icon fas fa-server"></i> <i
+            class="floating-icon fas fa-database"></i>
+    </div>
+    <div class="error-wrapper">
+        <div class="error-container"><!-- Status Banner -->
+            <div class="status-banner">
+                <div class="status-item"><span class="status-indicator"></span> <span>CONNECTION: LOST</span>
+                </div>
+                <div class="status-item"><span class="status-indicator"></span> <span>NODE: UNREACHABLE</span>
+                </div>
+                <div class="status-item"><span class="status-indicator active"></span> <span>SYSTEM: ONLINE</span>
+                </div>
+            </div><!-- Main Error Box -->
+            <div class="error-box">
+                <div class="node-indicator"><i class="fas fa-exclamation-triangle"></i> <span>ERROR NODE</span>
+                </div>
+                <div class="error-code" id="errorCode">
+                    404
+                </div>
+                <h1 class="error-title" id="mainTitle">Access Denied</h1>
+                <p class="error-subtitle" id="subtitle">The requested node could not be found</p>
+                <p class="error-description" id="description">The page you're looking for has been deleted, moved, or
+                    never existed in our database. Please check the URL or navigate back to the main site.</p>
+                <!-- System Status Cards -->
+                <div class="system-status">
+                    <div class="status-card">
+                        <div class="status-card-icon"><i class="fas fa-server"></i>
+                        </div>
+                        <div class="status-card-label">
+                            Server Status
+                        </div>
+                        <div class="status-card-value">
+                            OPERATIONAL
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-card-icon"><i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="status-card-label">
+                            Network
+                        </div>
+                        <div class="status-card-value">
+                            CONNECTED
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-card-icon"><i class="fas fa-database"></i>
+                        </div>
+                        <div class="status-card-label">
+                            Database
+                        </div>
+                        <div class="status-card-value">
+                            ACTIVE
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-card-icon"><i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="status-card-label">
+                            Security
+                        </div>
+                        <div class="status-card-value">
+                            PROTECTED
+                        </div>
+                    </div>
+                </div><!-- Suggestions -->
+                <div class="suggestions">
+                    <h3><i class="fas fa-lightbulb"></i> Possible Solutions</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Double-check the URL for any typos or errors</li>
+                        <li><i class="fas fa-history"></i> Use the back button to return to the previous page</li>
+                        <li><i class="fas fa-home"></i> Navigate to the homepage and start fresh</li>
+                        <li><i class="fas fa-search"></i> Try using the search function to find what you need</li>
+                        <li><i class="fas fa-envelope"></i> Contact support if the problem persists</li>
+                    </ul>
+                </div><!-- Back Button --> <a href="#" class="back-button" id="backButton"> <i
+                        class="fas fa-arrow-left"></i> <span id="buttonText">Back to Website</span> </a>
+            </div><!-- Footer -->
+            <div class="footer">
+                <p><i class="fas fa-terminal"></i> <span id="footerText">© 2024 Your Portfolio. All rights
+                        reserved.</span> <i class="fas fa-terminal"></i></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const defaultConfig = {
+            error_code: "404",
+            main_title: "Access Denied",
+            subtitle: "The requested node could not be found",
+            description: "The page you're looking for has been deleted, moved, or never existed in our database. Please check the URL or navigate back to the main site.",
+            button_text: "Back to Website",
+            footer_text: "© 2024 Your Portfolio. All rights reserved.",
+            background_color: "#0D0D0D",
+            neon_color: "#FF1E38",
+            text_color: "#e0e0e0",
+            card_background: "rgba(26, 26, 26, 0.8)",
+            font_family: "Rajdhani",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const errorCode = config.error_code || defaultConfig.error_code;
+            const mainTitle = config.main_title || defaultConfig.main_title;
+            const subtitle = config.subtitle || defaultConfig.subtitle;
+            const description = config.description || defaultConfig.description;
+            const buttonText = config.button_text || defaultConfig.button_text;
+            const footerText = config.footer_text || defaultConfig.footer_text;
+
+            const neonColor = config.neon_color || defaultConfig.neon_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const cardBackground = config.card_background || defaultConfig.card_background;
+
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const baseFontSize = config.font_size || defaultConfig.font_size;
+
+            document.getElementById('errorCode').textContent = errorCode;
+            document.getElementById('mainTitle').textContent = mainTitle;
+            document.getElementById('subtitle').textContent = subtitle;
+            document.getElementById('description').textContent = description;
+            document.getElementById('buttonText').textContent = buttonText;
+            document.getElementById('footerText').textContent = footerText;
+
+            document.body.style.color = textColor;
+            document.body.style.background = backgroundColor;
+            document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+            document.body.style.fontSize = `${baseFontSize}px`;
+
+            // Update neon color throughout
+            const style = document.createElement('style');
+            style.textContent = `
+        .cyber-grid { background-image: linear-gradient(${neonColor}1a 1px, transparent 1px), linear-gradient(90deg, ${neonColor}1a 1px, transparent 1px) !important; }
+        .scanline { background: linear-gradient(to bottom, transparent 50%, ${neonColor}08 51%, transparent 52%) !important; }
+        .status-banner { background: ${neonColor}1a !important; border-color: ${neonColor}66 !important; border-left-color: ${neonColor} !important; }
+        .status-indicator { background: #ff0000 !important; box-shadow: 0 0 10px #ff0000 !important; }
+        .status-indicator.active { background: #00ff00 !important; box-shadow: 0 0 10px #00ff00 !important; }
+        .error-box { border-color: ${neonColor}4d !important; box-shadow: 0 0 60px ${neonColor}4d, inset 0 0 80px ${neonColor}0d !important; background: linear-gradient(145deg, #1A1A1A 0%, ${backgroundColor} 100%) !important; }
+        .error-box::before, .error-box::after { border-color: ${neonColor} !important; }
+        .error-code { color: ${neonColor} !important; text-shadow: 0 0 30px ${neonColor}cc, 0 0 60px ${neonColor}99, 0 0 90px ${neonColor}66 !important; }
+        .node-indicator { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}cc !important; }
+        .error-title { text-shadow: 0 0 20px ${neonColor}99, 0 0 40px ${neonColor}66 !important; }
+        .error-subtitle { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}80 !important; }
+        .status-card { background: ${cardBackground} !important; border-color: ${neonColor}33 !important; }
+        .status-card:hover { border-color: ${neonColor}80 !important; box-shadow: 0 0 25px ${neonColor}33 !important; }
+        .status-card::before, .status-card::after { border-color: ${neonColor} !important; }
+        .status-card-icon { color: ${neonColor} !important; text-shadow: 0 0 15px ${neonColor}cc !important; }
+        .suggestions { background: ${neonColor}0d !important; border-color: ${neonColor}4d !important; }
+        .suggestions h3 { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}80 !important; }
+        .suggestions li:before { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}cc !important; }
+        .back-button { background: linear-gradient(135deg, ${neonColor} 0%, #cc0022 100%) !important; border-color: ${neonColor} !important; box-shadow: 0 0 30px ${neonColor}80 !important; }
+        .back-button:hover { box-shadow: 0 0 50px ${neonColor}b3, 0 8px 25px rgba(0,0,0,0.4) !important; }
+        .footer { border-top-color: ${neonColor}4d !important; }
+        .footer p i { color: ${neonColor} !important; }
+        .floating-icon { color: ${neonColor} !important; }
+      `;
+            document.head.appendChild(style);
+
+            // Font sizes
+            document.querySelector('.error-code').style.fontSize = `${baseFontSize * 8}px`;
+            document.querySelector('.error-title').style.fontSize = `${baseFontSize * 2.5}px`;
+            document.querySelector('.error-subtitle').style.fontSize = `${baseFontSize * 1.25}px`;
+            document.querySelector('.error-description').style.fontSize = `${baseFontSize * 1.125}px`;
+            document.querySelector('.back-button').style.fontSize = `${baseFontSize * 1.125}px`;
+            document.querySelector('.footer p').style.fontSize = `${baseFontSize * 0.9375}px`;
+
+            const statusLabels = document.querySelectorAll('.status-card-label');
+            statusLabels.forEach(label => label.style.fontSize = `${baseFontSize * 0.875}px`);
+
+            const statusValues = document.querySelectorAll('.status-card-value');
+            statusValues.forEach(value => value.style.fontSize = `${baseFontSize * 1.125}px`);
+
+            document.querySelector('.suggestions h3').style.fontSize = `${baseFontSize * 1.25}px`;
+
+            const suggestionItems = document.querySelectorAll('.suggestions li');
+            suggestionItems.forEach(item => item.style.fontSize = `${baseFontSize}px`);
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.neon_color || defaultConfig.neon_color,
+                        set: (value) => {
+                            config.neon_color = value;
+                            window.elementSdk.setConfig({ neon_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.card_background || defaultConfig.card_background,
+                        set: (value) => {
+                            config.card_background = value;
+                            window.elementSdk.setConfig({ card_background: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        window.elementSdk.setConfig({ font_family: value });
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        config.font_size = value;
+                        window.elementSdk.setConfig({ font_size: value });
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["error_code", config.error_code || defaultConfig.error_code],
+                ["main_title", config.main_title || defaultConfig.main_title],
+                ["subtitle", config.subtitle || defaultConfig.subtitle],
+                ["description", config.description || defaultConfig.description],
+                ["button_text", config.button_text || defaultConfig.button_text],
+                ["footer_text", config.footer_text || defaultConfig.footer_text]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+</body>
+
+</html>
