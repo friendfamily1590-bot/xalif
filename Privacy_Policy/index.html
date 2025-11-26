@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@300;400;600;700&amp;display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.6;
+      color: #e0e0e0;
+      background: #0D0D0D;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Cyber Grid Background */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(255, 30, 56, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 30, 56, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridScroll 20s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes gridScroll {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(50px);
+      }
+    }
+
+    /* Scanline Effect */
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+          transparent 50%,
+          rgba(255, 30, 56, 0.03) 51%,
+          transparent 52%);
+      background-size: 100% 4px;
+      animation: scanlines 8s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes scanlines {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 0 100%;
+      }
+    }
+
+    .privacy-wrapper {
+      width: 100%;
+      min-height: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .privacy-container {
+      max-width: 65rem;
+      width: 100%;
+      background: linear-gradient(145deg, #1A1A1A 0%, #0D0D0D 100%);
+      border: 1px solid rgba(255, 30, 56, 0.3);
+      border-radius: 0.5rem;
+      box-shadow:
+        0 0 40px rgba(255, 30, 56, 0.2),
+        inset 0 0 60px rgba(255, 30, 56, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Corner Brackets */
+    .privacy-container::before,
+    .privacy-container::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #FF1E38;
+      z-index: 10;
+    }
+
+    .privacy-container::before {
+      top: 10px;
+      left: 10px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .privacy-container::after {
+      bottom: 10px;
+      right: 10px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%);
+      color: #FF1E38;
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid rgba(255, 30, 56, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #FF1E38, transparent);
+      animation: headerScan 3s ease-in-out infinite;
+    }
+
+    @keyframes headerScan {
+
+      0%,
+      100% {
+        left: -100%;
+      }
+
+      50% {
+        left: 100%;
+      }
+    }
+
+    .node-indicator {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #FF1E38;
+      text-shadow: 0 0 10px rgba(255, 30, 56, 0.8);
+      margin-bottom: 1rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .node-indicator i {
+      margin-right: 0.5rem;
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #ffffff;
+      text-shadow:
+        0 0 20px rgba(255, 30, 56, 0.8),
+        0 0 40px rgba(255, 30, 56, 0.5),
+        0 0 60px rgba(255, 30, 56, 0.3);
+    }
+
+    .header p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      color: #888;
+      letter-spacing: 2px;
+    }
+
+    .header p i {
+      margin-right: 0.5rem;
+      color: #FF1E38;
+    }
+
+    .content {
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .intro-text {
+      font-size: 1.125rem;
+      color: #b0b0b0;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      padding: 1.5rem;
+      background: rgba(255, 30, 56, 0.05);
+      border-left: 3px solid #FF1E38;
+      border-radius: 0.25rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.6);
+      border: 1px solid rgba(255, 30, 56, 0.2);
+      border-radius: 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .section:hover {
+      border-color: rgba(255, 30, 56, 0.5);
+      box-shadow: 0 0 30px rgba(255, 30, 56, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Section Corner Brackets */
+    .section::before,
+    .section::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border: 1px solid #FF1E38;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .section:hover::before,
+    .section:hover::after {
+      opacity: 1;
+    }
+
+    .section::before {
+      top: 8px;
+      left: 8px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .section::after {
+      bottom: 8px;
+      right: 8px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #FF1E38;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 30, 56, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section h2 i {
+      font-size: 1.25rem;
+    }
+
+    .section p,
+    .section li {
+      color: #c0c0c0;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .section li {
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .section li:before {
+      content: "\f105";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #FF1E38;
+      position: absolute;
+      left: 0.5rem;
+      text-shadow: 0 0 10px rgba(255, 30, 56, 0.8);
+    }
+
+    .highlight-box {
+      background: rgba(255, 30, 56, 0.1);
+      border: 1px solid rgba(255, 30, 56, 0.4);
+      border-left: 4px solid #FF1E38;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-box::before {
+      content: '\f06a';
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: rgba(255, 30, 56, 0.2);
+    }
+
+    .highlight-box p {
+      margin: 0;
+      color: #e0e0e0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .highlight-box strong {
+      color: #FF1E38;
+      text-shadow: 0 0 5px rgba(255, 30, 56, 0.5);
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(255, 30, 56, 0.2) 0%, rgba(255, 30, 56, 0.05) 100%);
+      border: 2px solid #FF1E38;
+      color: #ffffff;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin-top: 2rem;
+      text-align: center;
+      box-shadow:
+        0 0 30px rgba(255, 30, 56, 0.3),
+        inset 0 0 30px rgba(255, 30, 56, 0.1);
+      position: relative;
+    }
+
+    .contact-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #FF1E38;
+      text-shadow: 0 0 15px rgba(255, 30, 56, 0.8);
+    }
+
+    .contact-box h3 i {
+      margin-right: 0.75rem;
+    }
+
+    .contact-box p {
+      font-size: 1.125rem;
+    }
+
+    .contact-box a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 30, 56, 0.2);
+      border: 1px solid #FF1E38;
+      border-radius: 0.25rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-box a:hover {
+      background: #FF1E38;
+      box-shadow: 0 0 20px rgba(255, 30, 56, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #FF1E38 0%, #cc0022 100%);
+      color: #ffffff;
+      padding: 1rem 2.5rem;
+      border: 2px solid #FF1E38;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 30, 56, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    .back-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .back-button:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 40px rgba(255, 30, 56, 0.6),
+        0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-button i {
+      font-size: 1.125rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer {
+      background: #0D0D0D;
+      padding: 2rem;
+      text-align: center;
+      border-top: 2px solid rgba(255, 30, 56, 0.5);
+      position: relative;
+    }
+
+    .footer p {
+      color: #888;
+      font-size: 0.9375rem;
+      letter-spacing: 1px;
+    }
+
+    .footer p i {
+      margin: 0 0.5rem;
+      color: #FF1E38;
+    }
+
+    /* Status Indicators */
+    .status-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #FF1E38;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      box-shadow: 0 0 10px #FF1E38;
+      animation: statusPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 10px #FF1E38;
+        transform: scale(1);
+      }
+
+      50% {
+        box-shadow: 0 0 20px #FF1E38, 0 0 30px rgba(255, 30, 56, 0.5);
+        transform: scale(1.2);
+      }
+    }
+
+    @media (max-width: 48rem) {
+      .privacy-wrapper {
+        padding: 1rem 0.5rem;
+      }
+
+      .header {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+
+      .header h1 {
+        font-size: 1.75rem;
+        letter-spacing: 2px;
+      }
+
+      .node-indicator {
+        font-size: 0.625rem;
+      }
+
+      .content {
+        padding: 1.5rem 1rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .section h2 {
+        font-size: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .back-button {
+        padding: 0.875rem 1.75rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000000
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #FF1E38;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="cyber-grid"></div>
+  <div class="scanline"></div>
+  <div class="privacy-wrapper">
+    <div class="privacy-container">
+      <div class="header">
+        <div class="node-indicator"><i class="fas fa-network-wired"></i> <span>NODE SECURE</span>
+        </div>
+        <h1 id="pageTitle">Privacy Policy</h1>
+        <p><i class="far fa-clock"></i><span id="lastUpdated">Last Updated: January <span id="join"></span></span></p>
+      </div>
+      <div class="content">
+
+        <p class="intro-text">
+          <span class="status-indicator"></span>
+          At <strong id="websiteName1">My Portfolio</strong>, your privacy matters.
+          I am committed to safeguarding your personal data and ensuring a transparent, secure browsing experience.
+          This Privacy Policy explains what information I collect, how it is used, and the choices you have regarding
+          your data.
+        </p>
+
+        <div class="section">
+          <h2><i class="fas fa-database"></i> Information I Collect</h2>
+          <p>When you interact with my website, I may collect the following information:</p>
+          <ul>
+            <li><strong>Personal Information:</strong> Name, email address and other details you voluntarily submit
+              through the contact form.</li>
+            <li><strong>Usage Data:</strong> IP address, device information, browser type, pages visited, time spent on
+              the site and general analytics data.</li>
+            <li><strong>Cookies:</strong> Small files stored on your device to improve functionality and personalize
+              your experience.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-cogs"></i> How I Use Your Information</h2>
+          <p>Your information is used for the following purposes:</p>
+          <ul>
+            <li>Responding to your messages, inquiries, or requests</li>
+            <li>Improving website performance and user experience</li>
+            <li>Analyzing traffic and visitor behavior to enhance features</li>
+            <li>Providing updates or notifications (only if you opt in)</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>Important:</strong> I do <strong>not</strong> sell, trade, or share your personal information with
+            third-party marketing services under any circumstances.</p>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-shield-alt"></i> Data Security</h2>
+          <p>
+            I apply standard security practices to protect your information.
+            However, no data transmission method over the internet can be guaranteed 100% secure.
+            While I strive to protect your data, absolute security cannot be ensured.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-plug"></i> Third-Party Services</h2>
+          <p>
+            This website may use trusted third-party tools (such as hosting services, analytics providers, or form
+            processors).
+            These services may collect data as part of their functionality and follow their own privacy policies.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-user-shield"></i> Your Rights</h2>
+          <p>You can request the following actions at any time:</p>
+          <ul>
+            <li>Access a copy of your personal information</li>
+            <li>Request correction of inaccurate or incomplete data</li>
+            <li>Request deletion of your personal information</li>
+            <li>Opt out of optional communications</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-cookie-bite"></i> Cookies Policy</h2>
+          <p>
+            Cookies help improve your browsing experience.
+            You may choose to disable cookies through your browser settings.
+            Note that disabling cookies may affect certain website features or functionality.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-sync-alt"></i> Changes to This Policy</h2>
+          <p>
+            This Privacy Policy may be updated occasionally to reflect improvements or legal requirements.
+            Any updates will be posted on this page with a revised date.
+            You are encouraged to review this policy from time to time.
+          </p>
+
+
+        </div>
+        <div class="contact-box">
+          <h3><i class="fas fa-envelope-open-text"></i> Questions or Concerns?</h3>
+          <p>If you have any questions about this Privacy Policy or how your data is handled, please contact me at: <a
+              href="mailto:morrelgonj_server.yahoo.com" id="contactEmailLink"><i class="fas fa-at"></i> <span
+                id="contactEmail">morrelgonj_server.yahoo.com</span></a></p>
+        </div>
+        <div style="text-align: center; margin-top: 2.5rem;"><a href="../" id="backButton" class="back-button"> <i
+              class="fas fa-arrow-left"></i> <span>Back to Website</span> </a>
+        </div>
+      </div>
+      <div class="footer">
+        <p><i class="fas fa-terminal"></i><span id="footerText">© <span id="year"></span> Your XALIF All rights
+            reserved.</span><i class="fas fa-terminal"></i></p>
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+  <script src="https://unpkg.com/kursor"></script>
+  <script>
+    const defaultConfig = {
+      page_title: "Privacy Policy",
+      website_name: "Your Portfolio",
+      contact_email: "your@email.com",
+      last_updated: "January 2024",
+      footer_text: "© 2024 Your Name. All rights reserved.",
+      background_gradient: "linear-gradient(145deg, #0D0D0D 0%, #1A1A1A 100%)",
+      neon_color: "#FF1E38",
+      text_color: "#e0e0e0",
+      card_background: "rgba(26, 26, 26, 0.6)",
+      font_family: "Rajdhani",
+      font_size: 16
+    };
+
+
+    document.getElementById("join").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    async function onConfigChange(config) {
+      const pageTitle = config.page_title || defaultConfig.page_title;
+      const websiteName = config.website_name || defaultConfig.website_name;
+      const contactEmail = config.contact_email || defaultConfig.contact_email;
+      const lastUpdated = config.last_updated || defaultConfig.last_updated;
+      const footerText = config.footer_text || defaultConfig.footer_text;
+
+      const neonColor = config.neon_color || defaultConfig.neon_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const baseFontSize = config.font_size || defaultConfig.font_size;
+
+      document.getElementById('pageTitle').textContent = pageTitle;
+      document.getElementById('websiteName1').textContent = websiteName;
+      document.getElementById('lastUpdated').textContent = `Last Updated: ${lastUpdated}`;
+      document.getElementById('contactEmail').textContent = contactEmail;
+      document.getElementById('contactEmailLink').href = `mailto:${contactEmail}`;
+      document.getElementById('footerText').textContent = footerText;
+
+      document.body.style.color = textColor;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      document.body.style.fontSize = `${baseFontSize}px`;
+
+      // Update neon color throughout
+      const style = document.createElement('style');
+      style.textContent = `
+        .privacy-container { border-color: ${neonColor}33 !important; }
+        .privacy-container::before,
+        .privacy-container::after { border-color: ${neonColor} !important; }
+        .header { border-bottom-color: ${neonColor}80 !important; }
+        .node-indicator { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}cc !important; }
+        .header h1 { text-shadow: 0 0 20px ${neonColor}cc, 0 0 40px ${neonColor}80, 0 0 60px ${neonColor}4d !important; }
+        .header p i { color: ${neonColor} !important; }
+        .intro-text { border-left-color: ${neonColor} !important; background: ${neonColor}0d !important; }
+        .section { border-color: ${neonColor}33 !important; }
+        .section:hover { border-color: ${neonColor}80 !important; box-shadow: 0 0 30px ${neonColor}26 !important; }
+        .section::before, .section::after { border-color: ${neonColor} !important; }
+        .section h2 { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}80 !important; }
+        .section li:before { color: ${neonColor} !important; text-shadow: 0 0 10px ${neonColor}cc !important; }
+        .highlight-box { border-color: ${neonColor}66 !important; border-left-color: ${neonColor} !important; background: ${neonColor}1a !important; }
+        .highlight-box strong { color: ${neonColor} !important; text-shadow: 0 0 5px ${neonColor}80 !important; }
+        .contact-box { border-color: ${neonColor} !important; background: linear-gradient(135deg, ${neonColor}33 0%, ${neonColor}0d 100%) !important; }
+        .contact-box h3 { color: ${neonColor} !important; text-shadow: 0 0 15px ${neonColor}cc !important; }
+        .contact-box a { border-color: ${neonColor} !important; background: ${neonColor}33 !important; }
+        .contact-box a:hover { background: ${neonColor} !important; box-shadow: 0 0 20px ${neonColor}99 !important; }
+        .back-button { background: linear-gradient(135deg, ${neonColor} 0%, #cc0022 100%) !important; border-color: ${neonColor} !important; box-shadow: 0 0 20px ${neonColor}66 !important; }
+        .back-button:hover { box-shadow: 0 0 40px ${neonColor}99, 0 5px 20px rgba(0,0,0,0.3) !important; }
+        .footer { border-top-color: ${neonColor}80 !important; }
+        .footer p i { color: ${neonColor} !important; }
+        .status-indicator { background: ${neonColor} !important; box-shadow: 0 0 10px ${neonColor} !important; }
+      `;
+      document.head.appendChild(style);
+
+      // Font sizes
+      document.querySelector('.header h1').style.fontSize = `${baseFontSize * 2.5}px`;
+      document.querySelector('.header p').style.fontSize = `${baseFontSize}px`;
+      document.querySelector('.intro-text').style.fontSize = `${baseFontSize * 1.125}px`;
+
+      const sectionHeadings = document.querySelectorAll('.section h2');
+      sectionHeadings.forEach(h => h.style.fontSize = `${baseFontSize * 1.5}px`);
+
+      const sectionText = document.querySelectorAll('.section p, .section li');
+      sectionText.forEach(t => t.style.fontSize = `${baseFontSize}px`);
+
+      document.querySelector('.contact-box h3').style.fontSize = `${baseFontSize * 1.5}px`;
+      document.querySelector('.contact-box p').style.fontSize = `${baseFontSize * 1.125}px`;
+      document.querySelector('.back-button').style.fontSize = `${baseFontSize}px`;
+      document.querySelector('.footer p').style.fontSize = `${baseFontSize * 0.9375}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_gradient || defaultConfig.background_gradient,
+            set: (value) => {
+              config.background_gradient = value;
+              window.elementSdk.setConfig({ background_gradient: value });
+            }
+          },
+          {
+            get: () => config.neon_color || defaultConfig.neon_color,
+            set: (value) => {
+              config.neon_color = value;
+              window.elementSdk.setConfig({ neon_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              config.card_background = value;
+              window.elementSdk.setConfig({ card_background: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["page_title", config.page_title || defaultConfig.page_title],
+        ["website_name", config.website_name || defaultConfig.website_name],
+        ["contact_email", config.contact_email || defaultConfig.contact_email],
+        ["last_updated", config.last_updated || defaultConfig.last_updated],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+  <script>
+    new kursor({
+      type: 1,
+      color: '#ff0000',
+      removeDefaultCursor: false, // default cursor stay
+    })
+  </script>
+  <style>
+    ::selection {
+      color: #00ffb3;
+    }
+  </style>
+</body>
+
+</html>
