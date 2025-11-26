@@ -4221,6 +4221,12 @@
         });
 
 
+        /* ================= Drag Image Disable ================= */
+        document.addEventListener("dragstart", function (e) {
+            e.preventDefault();
+        });
+
+
         /* ================= Text Selection Disable ================= */
         document.addEventListener("selectstart", function (e) {
             e.preventDefault();
