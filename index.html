@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
     <!-- MUST HAVE -->
     <link id="favicon" rel="icon" type="image/png"
-        href="https://img.icons8.com/emoji/48/000000/folded-hands-light-skin-tone.png">
+        href="https://img.icons8.com/external-basicons-color-danil-polshin/50/external-axes-axes-basicons-color-danil-polshin.png">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Orbitron:wght@400;700;900&amp;family=Poppins:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@300;400;600;700&amp;display=swap"
@@ -4165,121 +4165,114 @@
             window.location.href = "/404.html"; // custom error page
         }
 
-// 🔥 Global Swal Function
-function securityAlert(msg) {
-    Swal.fire({
-        title: "⚠️ Security Alert!",
-        text: msg,
-        icon: "warning",
-        confirmButtonText: "OK",
-        allowOutsideClick: false,
-        allowEscapeKey: false
-    }).then(() => {
-        window.location.href = "https://v902.cc/";
-    });
-}
-
-
-/* ================= Developer Mode Disable ================= */
-document.onkeydown = function (e) {
-    if (e.keyCode == 123) {
-        securityAlert("F12 / Developer Tools is blocked.");
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        securityAlert("Ctrl + Shift + I detected!");
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        securityAlert("Ctrl + Shift + C detected!");
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        securityAlert("Ctrl + Shift + J detected!");
-        return false;
-    }
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        securityAlert("Ctrl + U (View Source) blocked!");
-        return false;
-    }
-};
-
-
-/* ================= Right Click Disable ================= */
-document.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-    securityAlert("Right-click is disabled.");
-});
-
-
-/* ================= Copy, Cut, Paste Disable ================= */
-["copy", "cut", "paste"].forEach(evt => {
-    document.addEventListener(evt, function (e) {
-        e.preventDefault();
-        securityAlert(evt.toUpperCase() + " action blocked.");
-    });
-});
-
-
-/* ================= Drag Image Disable ================= */
-document.addEventListener("dragstart", function (e) {
-    e.preventDefault();
-    securityAlert("Dragging is disabled.");
-});
-
-
-/* ================= Text Selection Disable ================= */
-document.addEventListener("selectstart", function (e) {
-    e.preventDefault();
-    securityAlert("Text selection is blocked.");
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.body.style.userSelect = "none";
-    document.body.style.webkitUserSelect = "none";
-    document.body.style.msUserSelect = "none";
-    document.body.style.MozUserSelect = "none";
-});
-
-
-/* ================= DevTools Detect ================= */
-(function devToolsDetect() {
-    const element = new Image();
-    Object.defineProperty(element, 'id', {
-        get: function () {
-            securityAlert("DevTools detected!");
+        // 🔥 Global Swal Function
+        function securityAlert(msg) {
+            Swal.fire({
+                title: "⚠️ Security Alert!",
+                text: msg,
+                icon: "warning",
+                confirmButtonText: "OK",
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            }).then(() => {
+                window.location.href = "https://v902.cc/";
+            });
         }
-    });
 
-    console.log('%c', element);
 
-    setInterval(() => {
-        if (
-            window.outerWidth - window.innerWidth > 200 ||
-            window.outerHeight - window.innerHeight > 200
-        ) {
-            securityAlert("Developer Tools Open Detected!");
+        /* ================= Developer Mode Disable ================= */
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123) {
+                securityAlert("F12 / Developer Tools is blocked.");
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                securityAlert("Ctrl + Shift + I detected!");
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                securityAlert("Ctrl + Shift + C detected!");
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                securityAlert("Ctrl + Shift + J detected!");
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                securityAlert("Ctrl + U (View Source) blocked!");
+                return false;
+            }
+        };
+
+
+        /* ================= Right Click Disable ================= */
+        document.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            securityAlert("Right-click is disabled.");
+        });
+
+
+        /* ================= Copy, Cut, Paste Disable ================= */
+        ["copy", "cut", "paste"].forEach(evt => {
+            document.addEventListener(evt, function (e) {
+                e.preventDefault();
+                securityAlert(evt.toUpperCase() + " action blocked.");
+            });
+        });
+
+
+        /* ================= Text Selection Disable ================= */
+        document.addEventListener("selectstart", function (e) {
+            e.preventDefault();
+            securityAlert("Text selection is blocked.");
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.style.userSelect = "none";
+            document.body.style.webkitUserSelect = "none";
+            document.body.style.msUserSelect = "none";
+            document.body.style.MozUserSelect = "none";
+        });
+
+
+        /* ================= DevTools Detect ================= */
+        (function devToolsDetect() {
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function () {
+                    securityAlert("DevTools detected!");
+                }
+            });
+
+            console.log('%c', element);
+
+            setInterval(() => {
+                if (
+                    window.outerWidth - window.innerWidth > 200 ||
+                    window.outerHeight - window.innerHeight > 200
+                ) {
+                    securityAlert("Developer Tools Open Detected!");
+                }
+            }, 500);
+        })();
+
+
+        /* ================= Input Sanitizer ================= */
+        function sanitizeInput(str) {
+            return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
-    }, 500);
-})();
 
 
-/* ================= Input Sanitizer ================= */
-function sanitizeInput(str) {
-    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+        /* ================= Smart Keyboard Protection ================= */
+        ["keydown", "keypress", "keyup"].forEach(evt => {
+            document.addEventListener(evt, function (e) {
+                if (e.target.tagName.toLowerCase() === "input" ||
+                    e.target.tagName.toLowerCase() === "textarea") return;
 
-
-/* ================= Smart Keyboard Protection ================= */
-["keydown","keypress","keyup"].forEach(evt => {
-    document.addEventListener(evt, function (e) {
-        if (e.target.tagName.toLowerCase() === "input" || 
-            e.target.tagName.toLowerCase() === "textarea") return;
-
-        e.preventDefault();
-        securityAlert("Keyboard input blocked.");
-    });
-});
+                e.preventDefault();
+                securityAlert("Keyboard input blocked.");
+            });
+        });
     </script>
 
     <style>
@@ -4293,6 +4286,3 @@ function sanitizeInput(str) {
 </body>
 
 </html>
-
-
-
