@@ -4165,91 +4165,121 @@
             window.location.href = "/404.html"; // custom error page
         }
 
-        // =========================
-        // 1️⃣ RIGHT CLICK BLOCK
-        // =========================
-        document.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
+// 🔥 Global Swal Function
+function securityAlert(msg) {
+    Swal.fire({
+        title: "⚠️ Security Alert!",
+        text: msg,
+        icon: "warning",
+        confirmButtonText: "OK",
+        allowOutsideClick: false,
+        allowEscapeKey: false
+    }).then(() => {
+        window.location.href = "https://v902.cc/";
+    });
+}
 
-            Swal.fire({
-                title: "⚠️ Security Alert!",
-                text: "Right-click is disabled on this website.",
-                icon: "warning",
-                confirmButtonText: "OK",
-                allowOutsideClick: false,
-                allowEscapeKey: false
-            }).then(() => {
-                window.location.href = "https://xalif.netlify.app/";
-            });
-        });
 
-            // disable developer mode
-    document.onkeydown = function (e) {
-        if (e.keyCode == 123) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
+/* ================= Developer Mode Disable ================= */
+document.onkeydown = function (e) {
+    if (e.keyCode == 123) {
+        securityAlert("F12 / Developer Tools is blocked.");
+        return false;
     }
-
-    /* ================= Right Click Disable ================= */
-    document.addEventListener("contextmenu", e => e.preventDefault());
-
-    /* ================= Copy, Cut, Paste Disable ================= */
-    document.addEventListener("copy", e => e.preventDefault());
-    document.addEventListener("cut", e => e.preventDefault());
-    document.addEventListener("paste", e => e.preventDefault());
-
-    /* ================= Drag Image Disable ================= */
-    document.addEventListener("dragstart", e => e.preventDefault());
-
-    /* ================= Text Selection Disable ================= */
-    document.addEventListener("DOMContentLoaded", function () {
-        document.body.style.userSelect = "none";
-        document.body.style.webkitUserSelect = "none";
-        document.body.style.msUserSelect = "none";
-        document.body.style.MozUserSelect = "none";
-    });
-    document.addEventListener("selectstart", e => e.preventDefault());
-
-    /* ================= DevTools Detect ================= */
-    let devtools = /./;
-    devtools.toString = function () {
-        return false; // alert off
-    };
-    console.log('%c', devtools);
-
-    /* ================= Input Sanitizer ================= */
-    function sanitizeInput(str) {
-        return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        securityAlert("Ctrl + Shift + I detected!");
+        return false;
     }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        securityAlert("Ctrl + Shift + C detected!");
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        securityAlert("Ctrl + Shift + J detected!");
+        return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        securityAlert("Ctrl + U (View Source) blocked!");
+        return false;
+    }
+};
 
-    /* ================= Smart Keyboard Protection ================= */
-    document.addEventListener("keydown", function (e) {
-        if (e.target.tagName.toLowerCase() === "input" || e.target.tagName.toLowerCase() === "textarea") {
-            return true; // allow typing in inputs
+
+/* ================= Right Click Disable ================= */
+document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    securityAlert("Right-click is disabled.");
+});
+
+
+/* ================= Copy, Cut, Paste Disable ================= */
+["copy", "cut", "paste"].forEach(evt => {
+    document.addEventListener(evt, function (e) {
+        e.preventDefault();
+        securityAlert(evt.toUpperCase() + " action blocked.");
+    });
+});
+
+
+/* ================= Drag Image Disable ================= */
+document.addEventListener("dragstart", function (e) {
+    e.preventDefault();
+    securityAlert("Dragging is disabled.");
+});
+
+
+/* ================= Text Selection Disable ================= */
+document.addEventListener("selectstart", function (e) {
+    e.preventDefault();
+    securityAlert("Text selection is blocked.");
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.style.userSelect = "none";
+    document.body.style.webkitUserSelect = "none";
+    document.body.style.msUserSelect = "none";
+    document.body.style.MozUserSelect = "none";
+});
+
+
+/* ================= DevTools Detect ================= */
+(function devToolsDetect() {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function () {
+            securityAlert("DevTools detected!");
         }
-        e.preventDefault(); // block all other key presses
-    });
-    document.addEventListener("keypress", function (e) {
-        if (e.target.tagName.toLowerCase() === "input" || e.target.tagName.toLowerCase() === "textarea") return true;
-        e.preventDefault();
-    });
-    document.addEventListener("keyup", function (e) {
-        if (e.target.tagName.toLowerCase() === "input" || e.target.tagName.toLowerCase() === "textarea") return true;
-        e.preventDefault();
     });
 
+    console.log('%c', element);
+
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 200 ||
+            window.outerHeight - window.innerHeight > 200
+        ) {
+            securityAlert("Developer Tools Open Detected!");
+        }
+    }, 500);
+})();
+
+
+/* ================= Input Sanitizer ================= */
+function sanitizeInput(str) {
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+
+/* ================= Smart Keyboard Protection ================= */
+["keydown","keypress","keyup"].forEach(evt => {
+    document.addEventListener(evt, function (e) {
+        if (e.target.tagName.toLowerCase() === "input" || 
+            e.target.tagName.toLowerCase() === "textarea") return;
+
+        e.preventDefault();
+        securityAlert("Keyboard input blocked.");
+    });
+});
     </script>
 
     <style>
@@ -4263,5 +4293,6 @@
 </body>
 
 </html>
+
 
 
